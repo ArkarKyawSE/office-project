@@ -19,6 +19,7 @@ public class OfficeItem implements Serializable {
 	   
 	@Id
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date item_date;
 	private String name;
 	@Enumerated

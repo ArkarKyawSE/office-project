@@ -18,10 +18,12 @@ public class Income implements Serializable {
 	}
 	@Id
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date income_date;
 	@Enumerated
 	private CLASSTYPE classType;
 	private double amount;
+	@Lob
 	private String remark;
 	private static final long serialVersionUID = 1L;
 

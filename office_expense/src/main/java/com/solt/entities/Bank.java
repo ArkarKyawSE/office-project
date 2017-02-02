@@ -16,6 +16,7 @@ public class Bank implements Serializable {
 	   
 	@Id
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date bank_date;
 	private String description;
 	private double withdraw;

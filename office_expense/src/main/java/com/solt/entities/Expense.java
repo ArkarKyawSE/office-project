@@ -18,10 +18,12 @@ public class Expense implements Serializable {
 	}
 	@Id
 	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date expense_date;
 	@Enumerated
 	private EXPENSECATEGORY expense_category;
 	private double amount;
+	@Lob
 	private String remark;
 	private static final long serialVersionUID = 1L;
 
