@@ -11,12 +11,15 @@ import javax.persistence.*;
 @Entity
 
 public class User implements Serializable {
-
+	public enum userRole{
+		Office
+	}
 	   
 	@Id
 	private int id;
 	private String name;
 	private String password;
+	private userRole role;
 	private static final long serialVersionUID = 1L;
 
 	public User() {
@@ -43,5 +46,12 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public userRole getRole() {
+		return role;
+	}
+	public void setRole(userRole role) {
+		this.role = role;
+	}
+	
    
 }
