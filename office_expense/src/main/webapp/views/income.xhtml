@@ -1,11 +1,89 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
+<ui:composition template="/WEB-INF/template.xhtml">
+	<ui:define name="title">
+			Income
+		</ui:define>
+	<ui:define name="content">
+		<div class="row">
+			<div class="col l3 m3 s12"></div>
 
-</body> 
+			<div class="col l3 m3 s12">
+				<div class="card">
+					<div class="card-content">
+						<div class="row">
+						
+							<div class="input-field">
+								<h:selectOneMenu value="#{incomeBean.income.classType}">
+									<f:converter binding="#{incomeCategoryConverter}" />
+									<f:selectItems value="#{incomeCategory}" var="c"
+										itemLabel="#{c}" itemValue="#{c}" />
+								</h:selectOneMenu>
+								<h:outputLabel value="Class" />
+							</div>
+
+							<div class="input-field" id = "datePicker">
+								<h:inputText value="#{incomeBean.income.income_date}" required="true"
+									requiredMessage="Please add Date!!" converter="#{dateConverter}" />
+								<h:outputLabel value="Date" />
+							</div>
+
+							<div class="input-field">
+								<h:inputText value="#{incomeBean.income.amount}" required="true"
+									requiredMessage="Please add Amount !!" />
+								<h:outputLabel value="Amount" />
+							</div>
+							
+							<div class="input-field">
+								<h:inputTextarea value="#{incomeBean.income.remark}" />
+								<h:outputLabel value="Remark" />
+							</div>
+							
+						</div>
+					</div>
+					<div class="card-image responsive-image">
+						<h:graphicImage
+							value="#{imageBaseUrl}#{empty cc.attrs.blog.image ? defaultCover : cc.attrs.blog.imageUrl}"
+							onclick="clickImage();" styleClass="tooltipped"
+							p:data-position="bottom" p:data-delay="50"
+							p:data-tooltip="Upload Photo" />
+						<br />
+					</div>
+					<div style="display: none;">
+						<h:inputFile value="#{cc.attrs.imageFile}">
+							<f:ajax execute="@form" render="@all"
+								listener="#{cc.attrs.uploadListener}"></f:ajax>
+						</h:inputFile>
+					</div>
+
+					<div class="input-field">
+						<h:inputTextarea id="body" value="#{cc.attrs.blog.body}"
+							styleClass="materialize-textarea" rows="10" />
+						<h:outputLabel value="Description" for="body" />
+					</div>
+
+					<div>
+						<h:selectBooleanCheckbox id="publish" value="#{cc.attrs.publish}" />
+						<h:outputLabel value="Publish" for="publish"
+							styleClass="MarRight20 MarBot10" />
+						<h:commandLink action="#{cc.attrs.saveAction}"
+							value="#{cc.attrs.actionName}" styleClass="btn MarRight10 cyan" />
+					</div>
+				</div>
+
+			</div>
+			<div class="col l3 m3 s12"></div>
+		</div>
+			<script>
+				$(function() {
+					$('#datePicker').datetimepicker({format: 'YYYY-MM-DD'});
+				});
+			</script>
+
+	</ui:define>
+</ui:composition>
 </html>
