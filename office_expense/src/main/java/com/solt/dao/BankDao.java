@@ -9,8 +9,13 @@ import com.solt.entities.Bank;
 @Stateless
 public class BankDao extends AbstractDao<Bank>{
 
-	public BankDao(Class<Bank> type) {
-		super(type);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public BankDao() {
+		super(Bank.class);
 	}
 
 }

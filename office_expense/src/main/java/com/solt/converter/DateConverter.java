@@ -20,12 +20,12 @@ public class DateConverter implements Converter{
 	
 	@PostConstruct
 	private void init() {
-		df = new SimpleDateFormat("dd-MM-yyyy");
+		df = new SimpleDateFormat("dd MMMM,yyyy");
 	}
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		
+		System.out.println(value);
 		if(null != value) {
 			try {
 				return df.parse(value);

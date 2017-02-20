@@ -1,8 +1,6 @@
 package com.solt.beans;
 
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -94,72 +92,72 @@ public class ExpenseBean {
 		this.month = month;
 	}
 
-	public double getTotalTax() {
-		return totalTax;
+	public int getTotalTax() {
+		return (int)totalTax;
 	}
 
 	public void setTotalTax(double totalTax) {
 		this.totalTax = totalTax;
 	}
 
-	public double getTotalBill() {
-		return totalBill;
+	public int getTotalBill() {
+		return (int)totalBill;
 	}
 
 	public void setTotalBill(double totalBill) {
 		this.totalBill = totalBill;
 	}
 
-	public double getTotalMaintain() {
-		return totalMaintain;
+	public int getTotalMaintain() {
+		return (int)totalMaintain;
 	}
 
 	public void setTotalMaintain(double totalMaintain) {
 		this.totalMaintain = totalMaintain;
 	}
 
-	public double getTotalOffice() {
-		return totalOffice;
+	public int getTotalOffice() {
+		return (int)totalOffice;
 	}
 
 	public void setTotalOffice(double totalOffice) {
 		this.totalOffice = totalOffice;
 	}
 
-	public double getTotalPayRoll() {
-		return totalPayRoll;
+	public int getTotalPayRoll() {
+		return (int)totalPayRoll;
 	}
 
 	public void setTotalPayRoll(double totalPayRoll) {
 		this.totalPayRoll = totalPayRoll;
 	}
 
-	public double getTotalEmpTrain() {
-		return totalEmpTrain;
+	public int getTotalEmpTrain() {
+		return (int)totalEmpTrain;
 	}
 
 	public void setTotalEmpTrain(double totalEmpTrain) {
 		this.totalEmpTrain = totalEmpTrain;
 	}
 
-	public double getTotalRoomRental() {
-		return totalRoomRental;
+	public int getTotalRoomRental() {
+		return (int)totalRoomRental;
 	}
 
 	public void setTotalRoomRental(double totalRoomRental) {
 		this.totalRoomRental = totalRoomRental;
 	}
 
-	public double getTotalOthers() {
-		return totalOthers;
+	public int getTotalOthers() {
+		return (int)totalOthers;
 	}
 
 	public void setTotalOthers(double totalOthers) {
 		this.totalOthers = totalOthers;
 	}
 
-	public double getTotalAll() {
-		return totalAll;
+	public int getTotalAll() {
+		return (int)totalAll;
 	}
 
 	public void setTotalAll(double totalAll) {

@@ -68,48 +68,48 @@ public class IncomeBean {
 		this.income = income;
 	}
 
-	public double getTotalSE() {
-		return totalSE;
+	public int getTotalSE() {
+		return (int)totalSE;
 	}
 
 	public void setTotalSE(double totalSE) {
 		this.totalSE = totalSE;
 	}
 
-	public double getTotalEE() {
-		return totalEE;
+	public int getTotalEE() {
+		return (int)totalEE;
 	}
 
 	public void setTotalEE(double totalEE) {
 		this.totalEE = totalEE;
 	}
 
-	public double getTotalWEB() {
-		return totalWEB;
+	public int getTotalWEB() {
+		return (int)totalWEB;
 	}
 
 	public void setTotalWEB(double totalWEB) {
 		this.totalWEB = totalWEB;
 	}
 
-	public double getTotalONESTOP() {
-		return totalONESTOP;
+	public int getTotalONESTOP() {
+		return (int)totalONESTOP;
 	}
 
 	public void setTotalONESTOP(double totalONESTOP) {
 		this.totalONESTOP = totalONESTOP;
 	}
 
-	public double getTotalIncome() {
-		return totalIncome;
+	public int getTotalIncome() {
+		return (int)totalIncome;
 	}
 
 	public void setTotalIncome(double totalIncome) {
 		this.totalIncome = totalIncome;
 	}
 
-	public double getTotalOTHER() {
-		return totalOTHER;
+	public int getTotalOTHER() {
+		return (int)totalOTHER;
 	}
 
 	public void setTotalOTHER(double totalOTHER) {

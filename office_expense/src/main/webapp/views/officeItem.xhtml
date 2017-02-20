@@ -1,11 +1,111 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
+<ui:composition template="/WEB-INF/template.xhtml">
 
-</body> 
+	<ui:define name="title">
+			Office Item
+		</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="row">
+				<div class="col l2 m2 s0" style="color: white">.</div>
+				<div class="col l8 m8 s12">
+					<div class="row">
+						<div class="card">
+
+							<h:dataTable value="#{officeItemBean.officeItems}" var="ot"
+								class="responsive-table">
+
+								<h:column>
+									<f:facet name="header">Date</f:facet>    				
+			     							#{ot.item_date}
+			     							
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Category</f:facet>    				
+			     							#{ot.category}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Name</f:facet>    				
+			     							#{ot.name}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Quantity</f:facet>    				
+			     							#{ot.quantity}
+			   						</h:column>
+								<h:column>
+									<h:commandButton
+										action="#{officeItemBean.removeOfficeItem(ot)}" value="Remove"
+										class="btn" />
+								</h:column>
+
+							</h:dataTable>
+
+						</div>
+
+						<div class="row" align="right">
+							<a class="btn modal-trigger" href="#officeModal">ADD</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="col l2 m2 s0"></div>
+			</div>
+		</h:form>
+		<!-- addBankStatement -->
+		<h:form>
+			<div class="modal modal_form" id="officeModal">
+				<div class="modal-content">
+					<h4>Add Office Item</h4>
+					<div class="row">
+						<div class="col l6 m6 s12">
+							<div class="input-field">
+								<h:inputText value="#{officeItemBean.ot.item_date}"
+									styleClass="datepicker">
+									<f:converter binding="#{dateConverter}"></f:converter>
+								</h:inputText>
+								<h:outputLabel value="Date" />
+							</div>
+						</div>
+						<div class="col l6 m6 s12">
+							<div class="input-field">
+								<h:selectOneMenu value="#{officeItemBean.ot.category}">
+									<f:selectItems value="#{officeItemCategory}" var="c"
+										itemLabel="#{c}" itemValue="#{c}"></f:selectItems>
+								</h:selectOneMenu>
+								<h:outputLabel value="Category" />
+							</div>
+						</div>
+
+					</div>
+
+					<div class="input-field">
+						<h:inputText value="#{officeItemBean.ot.name}" />
+						<h:outputLabel value="Name" />
+					</div>
+
+					<div class="input-field">
+						<h:inputText value="#{officeItemBean.ot.quantity}" />
+						<h:outputLabel value="Quantity" />
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<h:commandButton action="#{officeItemBean.addOfficeItem()}"
+						value="SUBMIT" styleClass="btn-flat modal-action modal-close" />
+					<a href="#!" class="btn modal-action modal-close">CLOSE</a>
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

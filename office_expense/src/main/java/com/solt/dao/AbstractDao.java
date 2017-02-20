@@ -1,11 +1,9 @@
 package com.solt.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public abstract class AbstractDao<T> implements Dao<T> {
@@ -16,7 +14,6 @@ public abstract class AbstractDao<T> implements Dao<T> {
     private Class<T> type;
     
     private static final String SELECT = "select t from %s t ";
-    private static final String COUNT = "select count(t) from %s t ";
     
 	public AbstractDao(Class<T> type) {
 		super();
@@ -45,7 +42,8 @@ public abstract class AbstractDao<T> implements Dao<T> {
 	
 	@Override
 	public List<T> findAll(){
-		TypedQuery<T> query = em.createQuery(SELECT,type);
+		String sql = String.format(SELECT, type.getSimpleName());
+		TypedQuery<T> query = em.createQuery(sql,type);
 		return query.getResultList();
 	}
 }

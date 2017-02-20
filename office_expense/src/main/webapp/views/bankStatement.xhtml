@@ -1,11 +1,116 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
+<ui:composition template="/WEB-INF/template.xhtml">
+	<ui:define name="title">
+			Bank Statement
+		</ui:define>
 
-</body> 
+	<ui:define name="content">
+		<h:form>
+			<div class="row">
+			<div class="col l2 m2 s0" style="color: white">.</div>
+				<div class="col l8 m10 s12">
+					<div class="row">
+						<div class="card">
+
+							<h:dataTable value="#{bankBean.banks}" var="bank"
+								class="responsive-table">
+
+								<h:column>
+									<f:facet name="header">Date</f:facet>    				
+			     							#{bank.bank_date}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Description</f:facet>    				
+			     							#{bank.description}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Withdraw</f:facet>    				
+			     							#{bank.withdraw}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Deposit</f:facet>    				
+			     							#{bank.deposit}
+			   						</h:column>
+
+								<h:column>
+									<f:facet name="header">Closing Balance</f:facet>    				
+			     							#{bank.closingBalance}
+			   						</h:column>
+
+							</h:dataTable>
+						</div>
+
+						<div class="row" align="right">
+							<a class="waves-effect waves-light btn modal-trigger"
+								href="#bankModal">add</a>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col l2 m2 s4">
+					<div class="card  ">
+						<div class="card-content">
+							<h:outputLabel value="Total Withdraw" />
+							<h:outputText value="#{bankBean.totalWithdraw}"
+								styleClass="MarRight10 valign-wrapper right" />
+
+						</div>
+					</div>
+					<div class="card  ">
+						<div class="card-content">
+							<h:outputLabel value="Total Deposit" />
+							<h:outputText value="#{bankBean.totalDeposit}"
+								styleClass="MarRight10 valign-wrapper right" />
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+		<!-- addBankStatement -->
+		<h:form>
+			<div class="modal" id="bankModal">
+				<div class="modal-content">
+					<h4>Add Bank Statement</h4>
+
+					<div class="input-field">
+						<h:inputText value="#{bankBean.b.bank_date}"
+							styleClass="datepicker">
+							<f:converter binding="#{dateConverter}"></f:converter>
+						</h:inputText>
+						<h:outputLabel value="Date" />
+					</div>
+					<div class="input-field">
+						<h:inputText value="#{bankBean.b.description}" />
+						<h:outputLabel value="Description" />
+					</div>
+					<div class="input-field">
+						<h:inputText value="#{bankBean.b.withdraw}" />
+						<h:outputLabel value="Withdraw" />
+					</div>
+					<div class="input-field">
+						<h:inputText value="#{bankBean.b.deposit}" />
+						<h:outputLabel value="Deposit" />
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<h:commandButton action="#{bankBean.addStatement()}" value="ADD"
+						styleClass="btn modal-action modal-close marRight20"/>
+					
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

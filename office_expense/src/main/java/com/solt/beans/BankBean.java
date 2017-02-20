@@ -30,6 +30,21 @@ public class BankBean {
 	}
 	
 	public String addStatement(){
+		
+		Bank latest = new Bank();
+		double remain;
+		if(null != banks && !banks.isEmpty()){
+			latest = banks.get(0);
+			for(Bank bankiterate : banks){
+				if(bankiterate.getId() > latest.getId()){
+					latest = bankiterate;
+				}
+			}
+			remain = latest.getClosingBalance() + b.getDeposit() - b.getWithdraw();
+		}else{
+			remain = b.getDeposit()-b.getWithdraw();
+		}
+		b.setClosingBalance(remain);
 		bDao.insert(b);
 		return "/views/bankStatement?faces-redirect=true";
 	}

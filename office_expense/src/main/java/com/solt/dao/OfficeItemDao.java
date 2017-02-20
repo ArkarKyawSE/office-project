@@ -9,8 +9,13 @@ import com.solt.entities.OfficeItem;
 @Stateless
 public class OfficeItemDao extends AbstractDao<OfficeItem>{
 
-	public OfficeItemDao(Class<OfficeItem> type) {
-		super(type);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public OfficeItemDao() {
+		super(OfficeItem.class);
 		// TODO Auto-generated constructor stub
 	}
 

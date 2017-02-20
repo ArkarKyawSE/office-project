@@ -17,6 +17,7 @@ public class Income implements Serializable {
 		JAVASE , JAVAEE , JAVAWEB , ONESTOP , OTHER
 	}
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date income_date;
@@ -44,8 +45,8 @@ public class Income implements Serializable {
 	public void setIncome_date(Date income_date) {
 		this.income_date = income_date;
 	}   
-	public double getAmount() {
-		return this.amount;
+	public int getAmount() {
+		return (int)this.amount;
 	}
 
 	public void setAmount(double amount) {

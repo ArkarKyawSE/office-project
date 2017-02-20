@@ -15,6 +15,7 @@ public class Bank implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date bank_date;

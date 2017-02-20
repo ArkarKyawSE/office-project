@@ -1,5 +1,6 @@
 package com.solt.producer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,15 +10,15 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 public class YearMonthProducer {
-	private List<Integer> year;
-	private List<Integer> month;
+	private List<Integer> year = new ArrayList<Integer>();
+	private List<Integer> month = new ArrayList<Integer>();
 	
 	@PostConstruct
 	public void init(){
 		for(int i = 2017;i<=2030;i++){
 			year.add(i);
 		}
-		for(int i = 1;i<=12;i++){
+		for(int i = 0;i<=12;i++){
 			month.add(i);
 		}
 	}

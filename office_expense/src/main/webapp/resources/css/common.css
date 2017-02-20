@@ -1,0 +1,50 @@
+.container {
+	margin-left: 5%;
+	width: 90%;
+}
+
+.fs64 {
+	font-size: 64px;
+}
+
+.fs24 {
+	font-size: 24px;
+}
+
+.marTop20 {
+	margin-top: 20px;
+}
+
+.marRight20{
+	margin-left: 20px;
+}
+
+.marTop30 {
+	margin-top: 30px;
+}
+
+.mdl-layout {
+	align-items: center;
+  justify-content: center;
+}
+
+.mdl-layout__content {
+	padding: 24px;
+	flex: none;
+}
+
+.modal_login {
+  height: 50%;
+  width: 30%;
+}
+
+.modal_form {
+  height: 100%;
+  width: 50%;
+}
+
+.btn{
+	background-color: #5160fe;
+}
+
+

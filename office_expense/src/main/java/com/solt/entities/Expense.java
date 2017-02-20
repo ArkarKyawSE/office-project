@@ -17,6 +17,7 @@ public class Expense implements Serializable {
 		TAX , BILL , MAINTAINENCE , OFFICE_ITEM , PAY_ROLL, EMPLOYEE_TRAINNING , ROOM_RENTAL , OTHER
 	}
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date expense_date;
@@ -44,8 +45,8 @@ public class Expense implements Serializable {
 	public void setExpense_date(Date expense_date) {
 		this.expense_date = expense_date;
 	}   
-	public double getAmount() {
-		return this.amount;
+	public int getAmount() {
+		return (int)this.amount;
 	}
 
 	public void setAmount(double amount) {

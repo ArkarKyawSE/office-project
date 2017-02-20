@@ -1,11 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
+<h:head>
+	<title>Login</title>
+	
+	<link rel="stylesheet" href="resources/css/materialize.min.css" />
+	<link rel="stylesheet" href="resources/css/material-icons.css" />
+	<link rel="stylesheet" href="resources/css/common.css" />
 
-</body> 
+	<h:outputStylesheet library="css" name="materialize.min.css" />
+	<h:outputStylesheet library="css" name="material-icons.css" />
+	<h:outputStylesheet library="css" name="common.css" />
+
+	<h:outputScript library="js" name="jquery-2.2.3.min.js" />
+	<h:outputScript library="js" name="materialize.js" />
+</h:head> 
+<body>
+	<h:form>
+		<nav class="blue darken-3 blue-text text-accent-1">
+			<div class="container nav-wrapper navbar-fixed">
+				<h:link outcome="#!" style="color:white">Office Expense</h:link>
+				<span class="right">
+					<a class="modal-trigger" href="#modal2">
+						<i class="fa fa-sign-in">  Sign In</i>
+					</a>
+				</span>
+			</div>
+			<div class="right">
+				<h:messages style="color:red" showDetail="true" showSummary="false"/>
+			</div>
+		</nav>
+	</h:form>
+	<!-- Modal Structure -->
+	<h:form>
+		<div class="modal modal_login" id="modal2">
+			<div class="modal-content">
+				<h4>Please Sign In</h4>
+
+				<div class="input-field">
+					<h:inputText value="#{loginBean.loginId}" required="required"/>
+					<h:outputLabel value="Login ID" />
+				</div>
+
+				<div class="input-field">
+					<h:inputSecret id="pass" value="#{loginBean.password}" required="required"/>
+					<h:outputLabel value="Password"/>
+				</div>
+			</div>
+
+			<div class="center">
+				<h:link value="Cancle" outcome="/login" styleClass="btn blue accent-5 white-text" />
+				<h:commandLink action="#{loginBean.login()}" value="Sign In" 
+					styleClass="btn btn_color white-text" />
+			</div>
+		</div>
+	</h:form>
+	<div>
+		<img src="resources/image/img1.jpg" class="responsive-img" />
+	</div>
+
+		<script>
+		  $(document).ready(function(){
+		    $('.modal-trigger').leanModal();
+		  });
+       	</script>
+</body>
+			
 </html>

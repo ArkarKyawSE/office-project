@@ -24,14 +24,14 @@ public class Home {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public double getIncome() {
-		return income;
+	public int getIncome() {
+		return (int)income;
 	}
 	public void setIncome(double income) {
 		this.income = income;
 	}
-	public double getExpense() {
-		return expense;
+	public int getExpense() {
+		return (int)expense;
 	}
 	public void setExpense(double expense) {
 		this.expense = expense;

@@ -3,11 +3,9 @@ package com.solt.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.TypedQuery;
 
 import com.solt.entities.Expense;
 import com.solt.entities.Home;
@@ -31,7 +29,8 @@ public class HomeDao {
 		homes = new ArrayList<Home>();
 		incomes = icDao.findAll();
 		expenses = exDao.findAll();
-		changeToHome();
+		changeIncomeToHome();
+		changeExpenseToHome();
 		return homes;
 	}
 	
@@ -39,7 +38,8 @@ public class HomeDao {
 		homes = new ArrayList<Home>();
 		incomes = icDao.findbyMonth(year, month);
 		expenses = exDao.findbyMonth(year, month);
-		changeToHome();
+		changeIncomeToHome();
+		changeExpenseToHome();
 		return homes;
 	}
 		
@@ -47,11 +47,12 @@ public class HomeDao {
 		homes = new ArrayList<Home>();
 		incomes = icDao.findbyYear(year);
 		expenses = exDao.findbyYear(year);
-		changeToHome();
+		changeIncomeToHome();
+		changeExpenseToHome();
 		return homes;
 	}
 	
-	private void changeToHome(){
+	private void changeIncomeToHome(){
 		for(Income icome:incomes){
 			Home home = new Home();
 			home.setDate(icome.getIncome_date());
@@ -76,10 +77,13 @@ public class HomeDao {
 			home.setRemark(icome.getRemark());
 			homes.add(home);
 		}
+
+	}
+	private void changeExpenseToHome(){
 		for(Expense expense : expenses){
 			Home home = new Home();
 			home.setDate(expense.getExpense_date());
-			home.setIncome(expense.getAmount());
+			home.setExpense(expense.getAmount());
 			home.setRemark(expense.getRemark());
 			switch (expense.getExpense_category()){
 			case TAX:
@@ -108,7 +112,6 @@ public class HomeDao {
 				break;
 			}
 			homes.add(home);
-		}
-	
+		}		
 	}
 }
